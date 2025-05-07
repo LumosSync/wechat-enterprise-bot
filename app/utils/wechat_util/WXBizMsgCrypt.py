@@ -16,7 +16,8 @@ import time
 import xml.etree.ElementTree as ET
 
 from Crypto.Cipher import AES
-import ierror
+
+from . import ierror
 
 """
 关于Crypto.Cipher模块，ImportError: No module named 'Crypto'解决方案
