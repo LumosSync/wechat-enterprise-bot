@@ -1,0 +1,18 @@
+[project]
+name = "wechat-enterprise-bot"
+version = "0.0.1"
+description = "Default template for PDM package"
+authors = [
+    {name = "LumonsSync", email = "colorautumn@outlook.com"},
+]
+dependencies = ["fastapi>=0.115.12", "uvicorn[standard]>=0.34.2", "httpx>=0.28.1", "pydantic>=2.11.4"]
+requires-python = ">=3.10"
+readme = "README.md"
+license = {text = "AGPL3.0"}
+
+
+[tool.pdm]
+distribution = false
+
+[tool.pdm.scripts]
+start = "uvicorn app.main:app --reload"
