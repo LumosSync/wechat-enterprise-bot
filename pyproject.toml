@@ -8,11 +8,11 @@ dependencies = [
     "uvicorn[standard]>=0.34.2",
     "httpx>=0.28.1",
     "pydantic>=2.11.4",
+    "pycryptodome>=3.22.0",
 ]
 requires-python = ">=3.10"
 readme = "README.md"
 license = { text = "AGPL3.0" }
-
 
 [tool.pdm]
 distribution = false
@@ -24,32 +24,31 @@ start = "uvicorn app.main:app --reload"
 dev = ["ruff>=0.11.8", "pre-commit>=4.2.0"]
 
 [tool.ruff]
-line-length = 88
-target-version = "py39"
+line-length = 120
+target-version = "py310"
 
 [tool.ruff.lint]
 select = [
-    "F",     # Pyflakes
-    "W",     # pycodestyle warnings
-    "E",     # pycodestyle errors
-    "I",     # isort
-    "UP",    # pyupgrade
-    "ASYNC", # flake8-async
-    "C4",    # flake8-comprehensions
-    "T10",   # flake8-debugger
-    "T20",   # flake8-print
-    "PYI",   # flake8-pyi
-    "PT",    # flake8-pytest-style
-    "Q",     # flake8-quotes
-    "RUF",   # Ruff-specific rules
+    "F",
+    "W",
+    "W291",
+    "E",
+    "UP",
+    "I",
+    "C4",
+    "T10",
+    "T20",
+    "PYI",
+    "PT",
+    "Q",
+    "RUF",
+    "E501",
 ]
-ignore = [
-    "E402",   # module-import-not-at-top-of-file
-    "UP037",  # quoted-annotation
-    "RUF001", # ambiguous-unicode-character-string
-    "RUF002", # ambiguous-unicode-character-docstring
-    "RUF003", # ambiguous-unicode-character-comment
-]
+ignore = ["E402", "UP037", "RUF001", "RUF002", "RUF003"]
+unfixable = ["F401"] # 对无法自动修复的规则单独处理
+
+[tool.ruff.format]
+indent-style = "space" # 强制使用空格而非制表符
 
 [tool.ruff.lint.isort]
 force-sort-within-sections = true
